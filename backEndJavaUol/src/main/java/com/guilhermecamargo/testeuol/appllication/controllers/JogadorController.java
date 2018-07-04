@@ -21,13 +21,13 @@ import com.guilhermecamargo.testeuol.infra.exceptions.CodinomeExceptions;
 
 
 @Controller
-@RequestMapping(value = "/app")
+@RequestMapping(value = "/app/jogadores")
 public class JogadorController {
 	
    @Autowired
    private JogadorService jogadorService;
 
-   @GetMapping(value = "/jogadores")
+   @GetMapping(value = "/lista")
    public ModelAndView listar(){
       ModelAndView mav = new ModelAndView("home/listagem");
       mav.addObject("jogadores", jogadorService.findAll());
@@ -59,12 +59,12 @@ public class JogadorController {
       try{
           jogadorService.create(jogador);
           attributes.addFlashAttribute("sucesso", true);
-          return "redirect:/app/novo";
+          return "redirect:/app/jogadores/novo";
       }catch (CodinomeExceptions e){
          attributes.addFlashAttribute("jogador", jogador);
          attributes.addFlashAttribute("erroCodinome", true);
          attributes.addFlashAttribute("grupos", EnumGrupo.values());
-          return "redirect:/app/novo";
+          return "redirect:/app/jogadores/novo";
       }
    }
 

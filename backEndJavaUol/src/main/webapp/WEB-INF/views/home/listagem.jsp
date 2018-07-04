@@ -50,7 +50,7 @@
 				</table>
 		</div>
 		<div class="row float-right">
-			<a href="/app/novo" class="btn btn-primary">Novo jogador</a>
+			<a href="/app/jogadores/novo" class="btn btn-primary">Novo jogador</a>
 		</div>
 	</div>
 
@@ -91,7 +91,7 @@
 				url: "/jogadores/"+idExclusao,
 				type: "DELETE",
 				success: function () {
-					window.location = "/app/jogadores";
+					window.location = "/app/jogadores/lista";
 				},
 				error: function (xhr, textStatus, thrownError) {
 					console.log(xhr);

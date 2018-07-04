@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </c:if>
-            <form method="post" action="/app/salvar">
+            <form method="post" action="/app/jogadores/salvar">
                 <div class="input-group mb-3 w-50">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Nome</span>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="input-group mb-3 w-50">
                     <input type="email" name="email" class="form-control" placeholder="Digite aqui seu e-mail.."
-                           aria-label="e-mail" aria-describedby="basic-addon2" required>
+                           aria-label="e-mail" aria-describedby="basic-addon2" required value="${jogador.email}">
                     <div class="input-group-append">
                         <span class="input-group-text" id="basic-addon2">@exemplo.com</span>
                     </div>
@@ -54,21 +54,23 @@
                         <span class="input-group-text" id="basic-addon3">Telefone</span>
                     </div>
                     <input type="text" name="telefone" class="form-control" id="telefone"
-                           aria-label="telefone" aria-describedby="basic-addon3">
+                           aria-label="telefone" aria-describedby="basic-addon3" value="${jogador.telefone}">
                 </div>
                 <div class="input-group mb-3 w-50">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="selectGrupo">Quero ser do grupo:</label>
                     </div>
-                    <select name="grupo" class="custom-select" value="${jogador.grupo}" id="selectGrupo">
+                    <select name="grupo" class="custom-select" id="selectGrupo">
                         <c:forEach items="${grupos}" var="grupo">
-                            <option value="${grupo}">${grupo.descricao}</option>
+                            <option value="${grupo}"  ${grupo eq jogador.grupo ? 'selected' : ''}>
+                                    ${grupo.descricao}
+                            </option>
                         </c:forEach>
                     </select>
                 </div>
                 <div class="row w-50">
                     <div class="col">
-                        <a href="/app/jogadores" class="btn btn-primary">Voltar</a>
+                        <a href="/app/jogadores/lista" class="btn btn-primary">Voltar</a>
                     </div>
                     <div class="col">
                         <input type="submit" value="Cadastrar" class="btn btn-success">
