@@ -113,4 +113,5 @@ public class Jogador implements Serializable {
 	public void setGrupo(EnumGrupo grupo) {
 		this.grupo = grupo;
 	}
+	
 }
